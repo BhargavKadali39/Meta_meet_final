@@ -34,3 +34,33 @@ client.on("token-privilege-will-expire", async function(){
     //After requesting a new token
     let testok = await client.renewToken(token);
   });
+
+client.init(AppID);
+client.join(token,
+    channel, null, (uid)=>{
+    let localStream = AgoraRTC.createStream({
+        audio: false,
+        video: false,
+    });
+    localStream.init(()=>{
+        mystream = localStream;
+        localStream.play("hosty");
+        client.publish(localStream);
+    });
+});
+
+    document.getElementById("insert").innerHTML = "appid: " + AppID  + " channel: " + channel + "<br>" + "token: "+ token;
+
+    client.on("stream-added", function (evt){
+    client.subscribe(evt.stream);
+}); 
+
+client.on("stream-subscribed", function(evt){
+    let stream = evt.stream;
+    let streamId = String(stream.getId());
+    let user = document.getElementById("usero");
+    let div = document.createElement("div");
+    div.id = streamId;
+    user.appendChild(div);
+    stream.play(streamId);
+});
