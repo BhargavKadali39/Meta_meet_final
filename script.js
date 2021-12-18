@@ -18,3 +18,19 @@ function myFunction() {
     console.log(token);
     console.log(channel);
 }
+
+//-----------------------------   Dumping unsorted code down from here       ---------------------------------------------------------------
+
+
+
+let client = AgoraRTC.createClient({
+    mode: "rtc",
+    codec: "vp8",
+});
+let AppID = "89bb664a7d9348a1820df17d708bae53";
+let token = "00689bb664a7d9348a1820df17d708bae53IACgHoZZ2FwsXplsmrEh9zbHnvQmTU+hKT+k/VlWMCbIOsmD7b4AAAAAEADri2/QhuO9YQEAAQCD471h";
+let channel = "happy";
+client.on("token-privilege-will-expire", async function(){
+    //After requesting a new token
+    let testok = await client.renewToken(token);
+  });
