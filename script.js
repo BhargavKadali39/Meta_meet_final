@@ -64,3 +64,26 @@ client.on("stream-subscribed", function(evt){
     user.appendChild(div);
     stream.play(streamId);
 });
+
+let audio = false;
+let mystream;
+let video = false;
+
+let vdchkin = document.getElementById("vdchkin");
+vdchkin.addEventListener('change',function listp(){
+    if (vdchkin.checked) {
+        mystream.disableVideo();
+            
+    } else {
+        mystream.enableVideo();
+    }
+})
+let adchkin = document.getElementById("adchkin");
+adchkin.addEventListener('change',function lista(){
+    if (adchkin.checked) {
+        mystream.muteAudio();
+            
+    } else {
+        mystream.unmuteAudio();
+    }
+})
