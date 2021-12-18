@@ -87,3 +87,10 @@ adchkin.addEventListener('change',function lista(){
         mystream.unmuteAudio();
     }
 })
+let scchkin = document.getElementById("scchkin");
+scchkin.addEventListener('change',function listsc(){
+    if (scchkin.checked) {
+        window.open("indexShare.html");
+            
+    }
+})
