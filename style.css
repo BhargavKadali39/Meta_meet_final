@@ -1,10 +1,39 @@
 
 /* Dont mind the color codes,  still updating and building the product be patient */
-
 body{
     padding: 0;
     margin: 0;
-    background-color: beige;
+    background-color: #F2E3BC;
+}
+.form-mid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+input,button{
+    background-color: #D6CBC1;
+    height: 50px;
+    width: 350px;
+    margin: 15px;
+    border: 2px solid #414535;
+    color: rgb(0, 0, 0);
+    border-radius: 7px;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+button{
+    background-color: #CDD6D0;
+    width: 100px;
+}
+button:active,input:focus{
+    background-color: #618985;
+    color: #f0f8ff;
+}
+input:focus{
+    border-radius: 10px;
 }
 
 .main_db{
