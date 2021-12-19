@@ -1,26 +1,3 @@
-// document.querySelector("button").addEventListener("click", function() {
-//     var myValue = document.getElementById('AppID').value;
-//     var myValue1 = document.getElementById('token').value;
-//     var myValue2 = document.getElementById('channel').value;
-//     alert(myValue);
-//     })
-
-
-var myValue = document.getElementById('userVal').value;
-document.getElementById("Name").value = myValue;
-alert(myValue)
-
-function myFunction() {
-    var AppID = document.getElementById("AppID").value;
-    var token = document.getElementById("token").value;
-    var channel = document.getElementById("channel").value;
-    console.log(AppID);
-    console.log(token);
-    console.log(channel);
-}
-
-//-----------------------------   Dumping unsorted code down from here       ---------------------------------------------------------------
-
 
 
 let client = AgoraRTC.createClient({
@@ -28,19 +5,31 @@ let client = AgoraRTC.createClient({
     codec: "vp8",
 });
 let AppID = "89bb664a7d9348a1820df17d708bae53";
-let token = "00689bb664a7d9348a1820df17d708bae53IACgHoZZ2FwsXplsmrEh9zbHnvQmTU+hKT+k/VlWMCbIOsmD7b4AAAAAEADri2/QhuO9YQEAAQCD471h";
-let channel = "happy";
-client.on("token-privilege-will-expire", async function(){
-    //After requesting a new token
-    let testok = await client.renewToken(token);
-  });
+let token = "00689bb664a7d9348a1820df17d708bae53IACRugmzmK+FKCdZRePHPZzF/9+kYkbSjABw7n6GHKa6lN0BBfAAAAAAEADri2/QKaDAYQEAAQAooMBh";
+let channel = "qwert";
+
+
+
+// localStorage.setItem("MyAppIdLocal", AppID);
+// localStorage.setItem("MyTokenLocal", token);
+// localStorage.setItem("MyChannelLocal", channel);
+        // let tim = localStorage.getItem("MyAppIdLocal")
+        // alert(tim);
+// let tim = localStorage.getItem("MyAppIdLocal")
+// let tim = localStorage.getItem("MyTokenLocal")
+// let tim = localStorage.getItem("MyChannelLocal")
+
+// client.on("token-privilege-will-expire", async function(){
+        //After requesting a new token
+//     let testok = await client.renewToken(token);
+//   });
+
 
 client.init(AppID);
-client.join(token,
-    channel, null, (uid)=>{
+client.join(token,channel, null, (uid)=>{
     let localStream = AgoraRTC.createStream({
-        audio: false,
-        video: false,
+        audio: true,
+        video: true,
     });
     localStream.init(()=>{
         mystream = localStream;
@@ -82,15 +71,45 @@ let adchkin = document.getElementById("adchkin");
 adchkin.addEventListener('change',function lista(){
     if (adchkin.checked) {
         mystream.muteAudio();
-            
     } else {
         mystream.unmuteAudio();
     }
 })
+
 let scchkin = document.getElementById("scchkin");
 scchkin.addEventListener('change',function listsc(){
     if (scchkin.checked) {
-        window.open("indexShare.html");
-            
+        winShare = window.open("indexShare.html", '_blank');
+    }
+    if(!scchkin.checked){
+        winShare.close();
     }
 })
+
+
+
+    // function screensh(){
+    //         AgoraRTC.createScreenVideoTrack({
+    //             encoderConfig: "1080p_1",
+    //         }, "enable").then([screenVideoTrack, screenAudioTrack] => {
+    //             /** ... **/
+    //         });
+    // }
+
+
+    // to check if audio id muted or not // ir returns false if no audio found
+    // const audioTrack = await AgoraRTC.createMicrophoneAudioTrack({ microphoneId });
+    // AgoraRTC.checkAudioTrackIsActive(audioTrack).then(result => {
+    // console.log(`${ microphoneLabel } is ${ result ? "available" : "unavailable" }`);
+    // }).catch(e => {
+    // console.log("check audio track error!", e);
+    // });
+
+/* <audio crossOrigin="anonymous" src="http://www.test.com/test.mp3" id="audioDom"></audio>
+<script>
+  const element = document.getElementById("audioDom");
+  client.processExternalMediaAEC(element);
+</script> */
+
+
+
