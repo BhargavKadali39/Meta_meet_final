@@ -128,7 +128,7 @@ span{
     transform: translate(201px,-22px);
 }*/
 
-/* ------------------------------------------------------------------------------------------------ */
+/* --------------------------------- Don't mess with below code  --------------------------------------------------------------- */
 @font-face {
     font-family: 'icomoon';
     src:  url('fonts/icomoon.eot?mg1kgo');
@@ -156,6 +156,9 @@ span{
     -moz-osx-font-smoothing: grayscale;
   }
   
+/* --------- user toggle icons -------------- */
+
+
   .icon-microphone-svgrepo-com:before {
     content: "\e900";
   }
